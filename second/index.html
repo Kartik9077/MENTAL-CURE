@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Attention Test</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Mind Logo" class="site-logo">
+    <h1 class="site-title">Mental Cure</h1>
+  </header>
+  <div class="game-container">
+    <div class="header">
+      <h1>Attention Test</h1>
+      <div class="game-info">
+        <div class="timer"><span>Time:</span><span id="time">10</span>s</div>
+        <div class="score"><span>Score:</span><span id="score">0</span></div>
+      </div>
+    </div>
+
+    <div class="game-area">
+      <div class="target-instruction">Count: <span id="target-name" class="target-example"></span></div>
+      <div id="game-board" class="game-board"></div>
+    </div>
+
+    <div class="controls">
+      <button id="start-btn" class="btn">Begin Test</button>
+      <div id="round-result" class="round-result hidden"></div>
+    </div>
+  </div>
+
+  <div id="game-over" class="game-over hidden">
+    <h2>Test Complete!</h2>
+    <p>Your final score: <span id="final-score">0</span></p>
+    <p class="performance"></p>
+    <button id="restart-btn" class="btn">Try Again</button>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Mental Cure - Games</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI:wght@400;600;700&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to bottom right, #e6f0ff, #fefeff);
+      color: #2c3e50;
+    }
+
+    header {
+      background: #fff;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+      padding: 1rem 2rem;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: #2d6cdf;
+    }
+
+    .logo img {
+      height: 55px;
+      width: 55px;
+      border-radius: 50%;
+      box-shadow: 0 3px 10px rgba(45, 108, 223, 0.3);
+    }
+
+    nav a {
+      margin: 0 1rem;
+      text-decoration: none;
+      color: #333;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #2d6cdf;
+    }
+
+    .greeting {
+      text-align: center;
+      margin: 1.5rem 0;
+      font-size: 1.4rem;
+      font-weight: 600;
+      color: #2d6cdf;
+      animation: fadeIn 1s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .games-section {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.4rem;
+      color: #2d6cdf;
+      margin-bottom: 0.5rem;
+    }
+
+    .section-subtitle {
+      text-align: center;
+      font-size: 1.1rem;
+      color: #555;
+      margin-bottom: 2rem;
+    }
+
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+
+    .game-card {
+      background: #ffffff;
+      border-radius: 16px;
+      padding: 1.5rem;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .game-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+    }
+
+    .game-card img {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 1rem;
+      border-radius: 12px;
+      object-fit: cover;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+    }
+
+    .game-card h3 {
+      margin-bottom: 0.6rem;
+      color: #2d6cdf;
+      font-size: 1.2rem;
+    }
+
+    .game-card p {
+      font-size: 0.95rem;
+      color: #555;
+      margin-bottom: 1rem;
+    }
+
+    .game-btn {
+      display: inline-block;
+      padding: 0.6rem 1.2rem;
+      background-color: #2d6cdf;
+      color: white;
+      border-radius: 10px;
+      text-decoration: none;
+      font-weight: 600;
+      transition: background 0.3s ease, transform 0.2s ease;
+    }
+
+    .game-btn:hover {
+      background-color: #1f52b0;
+      transform: scale(1.05);
+    }
+
+    footer {
+      text-align: center;
+      padding: 1.5rem 0;
+      background-color: #f2f2f2;
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: 3rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="nav-container">
+      <div class="logo">
+        <img src="images/logo.png" alt="Mental Cure Logo" />
+        <span>Mental Cure</span>
+      </div>
+      <nav>
+        <a href="index.html">Home</a>
+        <a href="profile.html">Profile</a>
+    
+      </nav>
+    </div>
+  </header>
+
+  <div class="greeting" id="userGreeting">Welcome!</div>
+
+  <main>
+    <section class="games-section">
+      <h2 class="section-title">Interactive Games</h2>
+      <p class="section-subtitle">Engage in fun, relaxing and cognitive games tailored to support your mental well-being.</p>
+
+      <div class="games-grid">
+        <div class="game-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/1517/1517742.png" alt="Perception" />
+          <h3>Perception Test</h3>
+          <p>Improve cognitive skills by matching pairs.</p>
+          <a href="../first/perception_instructions.html" class="game-btn">Play Now</a>
+        </div>
+
+        <div class="game-card">
+<img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" alt="Stroop" />
+
+          <h3>Stroop Test</h3>
+          <p>Test your attention span and color-word coordination.</p>
+          <a href="../fifth/stroop_instructions.html" class="game-btn">Play Now</a>
+        </div>
+
+        <div class="game-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/942/942751.png" alt="Attention" />
+
+          <h3>Attention Test</h3>
+          <p>Sharpen focus through calming visuals and reflexes.</p>
+          <a href="../second/attention_instructions.html" class="game-btn">Play Now</a>
+        </div>
+
+        <div class="game-card">
+          <img src="https://img.icons8.com/fluency/96/lightning-bolt.png" alt="Reflex">
+          <h3> Reflex&Reaction Test</h3>
+          <p>How fast can you react? Find out with this reflex test!</p>
+          <a href="../sixth/reflex_instruc.html" class="game-btn">Play Now</a>
+        </div>
+
+        <div class="game-card">
+          <img src="https://img.icons8.com/fluency/96/brain.png" alt="Memory">
+          <h3>Memory Test</h3>
+          <p>Train emotional recognition through face-based memory games.</p>
+          <a href="../third_test/memory_ins.html" class="game-btn">Play Now</a>
+        </div>
+
+        <div class="game-card">
+          <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Language" />
+
+          <h3>Language Test</h3>
+          <p>Boost logic and language skills through fun challenges.</p>
+          <a href="../fourth/language_instructions.html" class="game-btn">Play Now</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Mental Cure. All rights reserved.</p>
+  </footer>
+
+  <script>
+    const username = localStorage.getItem('username') || "Guest";
+    document.getElementById("userGreeting").textContent = `Welcome, ${username}! 👋`;
+  </script>
+</body>
+</html>

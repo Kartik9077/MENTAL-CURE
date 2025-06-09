@@ -1,0 +1,142 @@
+:root {
+    --primary: #007BFF;
+    --success: #28a745;
+    --light: #f9f9f9;
+    --dark: #333;
+    --accent: #ff5722;
+    --font: 'Poppins', sans-serif;
+  }
+  
+  body {
+    font-family: var(--font);
+    margin: 0;
+    background: #f0f4f8;
+    color: var(--dark);
+  }
+  
+  header {
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 10px 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  }
+  
+  .site-logo {
+    height: 40px;
+    margin-right: 15px;
+  }
+  
+  .site-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--primary);
+  }
+  
+  .game-container {
+    max-width: 800px;
+    margin: 30px auto;
+    padding: 20px;
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+  }
+  
+  .header {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .game-info {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    font-weight: 600;
+  }
+  
+  .game-area {
+    text-align: center;
+    margin-top: 20px;
+  }
+  
+  .target-instruction {
+    font-size: 1.1rem;
+    font-weight: 500;
+    margin-bottom: 10px;
+  }
+  
+  .game-board {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+    min-height: 60px;
+  }
+  
+  .shape {
+    padding: 15px 20px;
+    background: var(--accent);
+    color: white;
+    font-weight: bold;
+    border-radius: 8px;
+  }
+  
+  .input-area input {
+    width: 60%;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 1rem;
+  }
+  
+  .btn {
+    padding: 10px 20px;
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 600;
+    margin-top: 10px;
+  }
+  
+  .btn:hover {
+    background: #0056b3;
+  }
+  
+  .hidden {
+    display: none;
+  }
+  
+  .round-result {
+    margin-top: 15px;
+    font-weight: 600;
+    color: var(--success);
+  }
+  
+  #final-summary {
+    margin-top: 30px;
+    padding: 10px;
+    background-color: var(--light);
+    border-radius: 10px;
+  }
+  
+  #final-summary h2 {
+    color: var(--success);
+    text-align: center;
+    margin-bottom: 15px;
+  }
+  
+  #final-summary table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.95rem;
+  }
+  
+  #final-summary th,
+  #final-summary td {
+    padding: 10px;
+    border: 1px solid #ccc;
+    text-align: center;
+  }
+  

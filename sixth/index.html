@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Reflex and Reaction Test</title>
+  <link rel="stylesheet" href="styles.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <img src="logo.png" alt="Mind Logo" class="site-logo">
+    <h1 class="site-title">Mental Cure</h1>
+  </header>
+  <div class="game-container">
+    <div class="header">
+      <h1>Reflex and Reaction Test</h1>
+      <div class="game-info">
+        <div class="timer">
+          <span>Time:</span>
+          <span id="time">15</span>s
+        </div>
+        <div class="score">
+          <span>Score:</span>
+          <span id="score">0</span>
+        </div>
+        <div class="round">
+          <span>Round:</span>
+          <span id="round">1</span>/5
+        </div>
+      </div>
+    </div>
+
+    <div class="game-area">
+      <div id="word-container">
+        <div id="fill-word" class="fill-word"></div>
+        <input
+          id="answer-input"
+          type="text"
+          placeholder="Type your guess here"
+          autocomplete="off"
+          autofocus
+        />
+      </div>
+      <div class="controls">
+        <button id="skip-btn" class="btn">Skip</button>
+        <button id="next-btn" class="btn hidden">Next Round</button>
+      </div>
+    </div>
+
+    <div id="result-box" class="game-over hidden">
+      <h2>Test Complete!</h2>
+      <p>Your final score: <span id="final-score">0</span></p>
+      <button id="restart-btn" class="btn">Try Again</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

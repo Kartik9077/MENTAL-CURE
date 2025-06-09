@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>User Profile</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    :root {
+  --primary-color: #0ea5e9;
+  --secondary-color: #f0f9ff;
+  --text-color: #1e293b;
+  --background-color: #ffffff;
+  --border-radius: 0.5rem;
+  --transition-speed: 0.3s;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+.navbar {
+  background-color: var(--secondary-color);
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.profile-menu-container {
+  position: relative;
+}
+
+.profile-toggle {
+  display: flex;
+  align-items: center;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  margin-right: 0.5rem;
+}
+
+.username {
+  font-weight: 500;
+}
+
+.profile-dropdown {
+  position: absolute;
+  right: 0;
+  top: 100%;
+  margin-top: 0.5rem;
+  background-color: var(--background-color);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  z-index: 1000;
+}
+
+.hidden {
+  display: none;
+}
+
+.dropdown-header {
+  padding: 1rem;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.signed-in-as {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin: 0;
+}
+
+.dropdown-username {
+  font-weight: 600;
+  margin: 0.25rem 0 0 0;
+}
+
+.dropdown-menu {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.dropdown-menu li {
+  border-top: 1px solid #e5e7eb;
+}
+
+.dropdown-menu button {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: none;
+  border: none;
+  text-align: left;
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+}
+
+.dropdown-menu button:hover {
+  background-color: var(--secondary-color);
+}
+
+.sign-out {
+  color: #ef4444;
+}
+
+.profile-section {
+  max-width: 600px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background-color: var(--background-color);
+  border: 1px solid #e5e7eb;
+  border-radius: var(--border-radius);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+}
+
+.profile-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.avatar-large {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 2px solid var(--primary-color);
+  margin-right: 1rem;
+}
+
+.profile-name {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.profile-id {
+  margin: 0.25rem 0 0 0;
+  color: #6b7280;
+}
+
+.upload-section {
+  margin-bottom: 2rem;
+}
+
+.upload-section label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+.upload-section input[type="file"] {
+  display: block;
+}
+
+.profile-form {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+.profile-form label {
+  font-weight: 500;
+}
+
+.profile-form input,
+.profile-form select,
+.profile-form textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #d1d5db;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+}
+
+.profile-form button {
+  padding: 0.75rem;
+  background-color: var(--primary-color);
+  color: #ffffff;
+  border: none;
+  border-radius: var(--border-radius);
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color var(--transition-speed);
+}
+
+.profile-form button:hover {
+  background-color: #0284c7;
+}
+
+  </style>
+</head>
+<body>
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="profile-menu-container">
+      <button id="profile-toggle" class="profile-toggle">
+        <img id="profile-avatar" src="https://via.placeholder.com/40" alt="User Avatar" class="avatar" />
+        <span id="profile-username" class="username">User</span>
+      </button>
+      <div id="profile-dropdown" class="profile-dropdown hidden">
+        <div class="dropdown-header">
+          <p class="signed-in-as">Signed in as</p>
+          <p id="dropdown-username" class="dropdown-username">User</p>
+        </div>
+        <ul class="dropdown-menu">
+         <li> <a href="dashboard.html">
+            <button>📊standings</button>
+          </a>
+          </li>
+          <li><button class="sign-out" onclick="handleSignOut()">🚪 Sign Out</button></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Profile Section -->
+  <main class="profile-section">
+    <div class="profile-header">
+      <img id="profile-avatar-main" src="https://via.placeholder.com/80" alt="User Avatar" class="avatar-large" />
+      <div>
+        <h2 id="profile-name" class="profile-name">User Name</h2>
+        <p id="profile-id" class="profile-id">ID: 123456</p>
+      </div>
+    </div>
+
+    <!-- Profile Picture Upload -->
+    <div class="upload-section">
+      <label for="avatar-upload">Upload Profile Picture</label>
+      <input type="file" id="avatar-upload" accept="image/png, image/jpeg" />
+    </div>
+
+    <!-- Editable Fields -->
+    <form id="profile-form" class="profile-form">
+      <label for="name">Name</label>
+      <input type="text" id="name" />
+
+      <label for="gender">Gender</label>
+      <select id="gender">
+        <option value="">Select Gender</option>
+        <option value="Male">Male</option>
+        <option value="Female">Female</option>
+        <option value="Other">Other</option>
+      </select>
+
+      <label for="age">Age</label>
+      <input type="number" id="age" />
+
+      <label for="location">Location</label>
+      <input type="text" id="location" />
+
+      <label for="bio">Bio</label>
+      <textarea id="bio" rows="4"></textarea>
+
+      <button type="submit" id="save-button">Save</button>
+    </form>
+  </main>
+
+  <script>
+    // JavaScript will be included here
+    const toggleBtn = document.getElementById('profile-toggle');
+    const dropdown = document.getElementById('profile-dropdown');
+    const profileContainer = document.getElementById('profile-menu-container');
+    const usernameText = document.getElementById('profile-username');
+    const dropdownUsername = document.getElementById('dropdown-username');
+    const profileName = document.getElementById('profile-name');
+    const profileId = document.getElementById('profile-id');
+    const profileAvatar = document.getElementById('profile-avatar');
+    const profileAvatarMain = document.getElementById('profile-avatar-main');
+    const nameInput = document.getElementById('name');
+    const genderInput = document.getElementById('gender');
+    const ageInput = document.getElementById('age');
+    const locationInput = document.getElementById('location');
+    const bioInput = document.getElementById('bio');
+    const saveButton = document.getElementById('save-button');
+    const avatarUpload = document.getElementById('avatar-upload');
+
+    // Load user data from localStorage or use defaults
+    const userData = {
+      name: localStorage.getItem('username') || 'User Name',
+      id: localStorage.getItem('userId') || '123456',
+      avatar: localStorage.getItem('avatarUrl') || 'https://via.placeholder.com/80',
+      gender: localStorage.getItem('gender') || '',
+      age: localStorage.getItem('age') || '',
+      location: localStorage.getItem('location') || '',
+      bio: localStorage.getItem('bio') || ''
+    };
+
+    // Set user data in the DOM
+    usernameText.textContent = userData.name;
+    dropdownUsername.textContent = userData.name;
+    profileName.textContent = userData.name;
+    profileId.textContent = `ID: ${userData.id}`;
+    profileAvatar.src = userData.avatar;
+    profileAvatarMain.src = userData.avatar;
+    nameInput.value = userData.name;
+    genderInput.value = userData.gender;
+    ageInput.value = userData.age;
+    locationInput.value = userData.location;
+    bioInput.value = userData.bio;
+
+    // Toggle dropdown visibility
+    toggleBtn.addEventListener('click', () => {
+      dropdown.classList.toggle('hidden');
+    });
+
+    // Close dropdown when clicking outside
+    document.addEventListener('click', (e) => {
+      if (!profileContainer.contains(e.target)) {
+        dropdown.classList.add('hidden');
+      }
+    });
+
+    // Save button handler
+    saveButton.addEventListener('click', () => {
+      const updatedData = {
+        name: nameInput.value,
+        gender: genderInput.value,
+        age: ageInput.value,
+        location: locationInput.value,
+        bio: bioInput.value
+      };
+      localStorage.setItem('username', updatedData.name);
+      localStorage.setItem('gender', updatedData.gender);
+      localStorage.setItem('age', updatedData.age);
+      localStorage.setItem('location', updatedData.location);
+      localStorage.setItem('bio', updatedData.bio);
+      usernameText.textContent = updatedData.name;
+      dropdownUsername.textContent = updatedData.name;
+      profileName.textContent = updatedData.name;
+      alert('Profile updated successfully!');
+    });
+
+    // Sign out handler
+    function handleSignOut() {
+      localStorage.clear();
+      alert('Signed out!');
+      window.location.href = 'login.html'; // Adjust the redirect as needed
+    }
+
+    // Handle profile picture upload
+    avatarUpload.addEventListener('change', function (event) {
+      const file = event.target.files[0];
+      if (file && file.type.startsWith('image/')) {
+        const reader = new FileReader();
+        reader.onload = function (e) {
+          const imageDataUrl = e.target.result;
+          // Update avatar images
+          profileAvatar.src = imageDataUrl;
+          profileAvatarMain.src = imageDataUrl;
+          // Store in localStorage
+          localStorage.setItem('avatarUrl', imageDataUrl);
+        };
+        reader.readAsDataURL(file);
+      } else {
+        alert('Please select a valid image file (PNG or JPEG).');
+      }
+    });
+
+  </script>
+</body>
+</html>

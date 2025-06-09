@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Login - Mental Cure</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .login-container {
+      max-width: 450px;
+      margin: 5rem auto;
+      background: white;
+      padding: 2rem;
+      border-radius: 10px;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .login-container h2 {
+      text-align: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .login-container label {
+      display: block;
+      margin-bottom: 0.5rem;
+      margin-top: 1rem;
+      font-weight: bold;
+    }
+
+    .login-container input[type="text"],
+    .login-container input[type="email"],
+    .login-container input[type="password"],
+    .login-container input[type="number"] {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+
+    .login-container .user-type {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 1rem;
+    }
+
+    .login-container button {
+      width: 100%;
+      margin-top: 1.5rem;
+      padding: 0.75rem;
+      background-color: #2d6cdf;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 1rem;
+      cursor: pointer;
+    }
+
+    .login-container button:hover {
+      background-color: #1f4bbf;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo" tabindex="0" aria-label="Mental Cure logo" role="link" onclick="location.href='/'" onkeypress="if(event.key==='Enter'){location.href='/'}">
+      <img src="logo.png" alt="Mental Cure Icon" />
+      <span>Mental Cure</span>
+    </div>
+  </header>
+
+  <main>
+    <div class="login-container">
+      <h2>Login / Sign Up</h2>
+
+      <div class="user-type">
+        <label><input type="radio" name="usertype" value="existing" checked onchange="toggleFields()" /> Existing User</label>
+        <label><input type="radio" name="usertype" value="new" onchange="toggleFields()" /> New User</label>
+      </div>
+
+      <form onsubmit="return validateLogin()">
+        <div id="new-user-fields" style="display: none;">
+          <label for="username">Username</label>
+          <input type="text" id="username" placeholder="Enter your name" />
+
+          <label for="age">Age</label>
+          <input type="number" id="age" min="10" max="100" placeholder="Enter your age" />
+        </div>
+
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="you@example.com" required />
+
+        <label for="password">Password</label>
+        <input type="password" id="password" placeholder="Enter your password" required />
+
+        <button type="submit">Continue</button>
+      </form>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Mental Cure. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function toggleFields() {
+      const userType = document.querySelector('input[name="usertype"]:checked').value;
+      const newUserFields = document.getElementById("new-user-fields");
+      newUserFields.style.display = userType === "new" ? "block" : "none";
+    }
+
+    async function handleSignup(name, email, password) {
+      try {
+        const res = await fetch('http://localhost:3000/signup', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name, email, password })
+        });
+
+        const data = await res.json();
+        alert(data.message || data.error);
+
+        if (res.ok) {
+          const wantsAssessment = confirm(`Welcome ${name}! Do you want to start your assessment? Click "OK" to start or "Cancel" to skip.`);
+          if (wantsAssessment) {
+            window.location.href = "assessment.html";
+          } else {
+            window.location.href = "index.html";
+          }
+        }
+      } catch (error) {
+        console.error("❌ Signup Error:", error);
+        alert("Something went wrong! Please try again.");
+      }
+    }
+
+    async function handleLogin(email, password) {
+      try {
+        const res = await fetch('http://localhost:3000/login', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ email, password })
+        });
+
+        const data = await res.json();
+        alert(data.message || data.error);
+
+        if (res.ok) {
+          localStorage.setItem("username", data.name || "User");
+          localStorage.setItem("email", email);
+
+          const tokenPayload = {
+            username: data.name || "User",
+            email: email,
+            timestamp: new Date().toISOString()
+          };
+          const token = btoa(JSON.stringify(tokenPayload));
+          localStorage.setItem("authToken", token);
+            alert("login successful");
+          window.location.href = "index.html";
+        }
+      } catch (error) {
+        console.error("❌ Login Error:", error);
+        alert("Login  successful.");
+      }
+    }
+
+    function validateLogin() {
+      const userType = document.querySelector('input[name="usertype"]:checked').value;
+      const email = document.getElementById("email").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      if (!email || !password) {
+        alert("Please fill in email and password.");
+        return false;
+      }
+
+      if (userType === "new") {
+        const username = document.getElementById("username").value.trim();
+        const age = document.getElementById("age").value;
+
+        if (!username || !age) {
+          alert("Please fill in username and age for new user.");
+          return false;
+        }
+
+        localStorage.setItem("username", username);
+        localStorage.setItem("age", age);
+        localStorage.setItem("email", email);
+
+        handleSignup(username, email, password);
+      } else {
+        handleLogin(email, password);
+      }
+
+      return false; // Prevent default form submission
+    }
+  </script>
+</body>
+</html>

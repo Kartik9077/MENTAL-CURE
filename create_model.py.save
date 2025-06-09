@@ -1,0 +1,16 @@
+from sklearn.dummy import DummyClassifier
+import joblib
+
+# Create a dummy model that always predicts 1
+model = DummyClassifier(strategy='constant', constant=1)
+
+# Fit model with dummy data (required before saving)
+X = [[0], [1], [2]]
+y = [1, 1, 1]
+model.fit(X, y)
+
+# Save the model to 'model.pkl'
+joblib.dump(model, 'model.pkl')
+
+print("Dummy model saved as model.pkl")
+

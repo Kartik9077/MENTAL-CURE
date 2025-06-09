@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mental Cure - Assessment</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #74ebd5, #acb6e5);
+      margin: 0;
+      padding: 40px 20px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: auto;
+      background: #ffffff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.6s ease-in-out;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo img {
+      height: 70px;
+      width: auto;
+      border-radius: 12px;
+    }
+
+    .home-icon {
+      font-size: 28px;
+      color: #2c3e50;
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+
+    .home-icon:hover {
+      color: #3498db;
+    }
+
+    h1 {
+      text-align: center;
+      color: #2c3e50;
+      margin-bottom: 30px;
+      font-size: 32px;
+    }
+
+    .question {
+      margin-bottom: 25px;
+      padding: 20px;
+      background: #f8f9fa;
+      border-left: 5px solid #3498db;
+      border-radius: 8px;
+    }
+
+    .question p {
+      font-weight: bold;
+      color: #2c3e50;
+      margin-bottom: 10px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      color: #34495e;
+      cursor: pointer;
+    }
+
+    input[type="radio"] {
+      margin-right: 10px;
+    }
+
+    button {
+      background: #3498db;
+      color: white;
+      padding: 12px 25px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 16px;
+      display: block;
+      width: 100%;
+      margin-top: 30px;
+      transition: background 0.3s ease;
+    }
+
+    button:hover {
+      background: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="logo">
+        <img src=" ../frontend/images/logo.png" alt="Mental Cure Logo">
+        <h1>Mental Health Assessment</h1>
+      </div>
+      <a href="index.html" class="home-icon" title="Go to Home">
+        <i class="fas fa-home"></i>
+      </a>
+    </div>
+
+    <form id="assessmentForm"></form>
+    <button onclick="submitAssessment()">Submit & Get Game Suggestions</button>
+  </div>
+
+  <script>
+    const questions = [
+      {
+        question: "How often do you feel mentally drained by the end of the day?",
+        category: "stress",
+        options: ["Never", "Rarely", "Sometimes", "Often", "Always"],
+      },
+      {
+        question: "You're reading and someone calls your name — how easily do you lose focus?",
+        category: "focus",
+        options: ["Never", "Rarely", "Sometimes", "Often", "Always"],
+      },
+      {
+        question: "You see a number plate — how long do you remember it?",
+        category: "memory",
+        options: ["Instantly forget", "1-2 seconds", "3-5 seconds", "10 seconds", "More than 10 seconds"],
+      },
+      {
+        question: "In a crowd, how quickly can you spot someone you know?",
+        category: "perception",
+        options: ["Not at all", "Slow", "Average", "Fast", "Very fast"],
+      },
+      {
+        question: "How easily can you list words starting with a specific letter?",
+        category: "language",
+        options: ["Very hard", "Hard", "Neutral", "Easy", "Very easy"],
+      },
+      {
+        question: "When you hear a loud sound, how quickly do you react?",
+        category: "reflex",
+        options: ["Very slow", "Slow", "Average", "Fast", "Very fast"],
+      },
+      {
+        question: "How do you usually solve problems — gut instinct or step-by-step logic?",
+        category: "reasoning",
+        options: ["Gut only", "Mostly gut", "Mix of both", "Mostly logic", "Logic only"],
+      },
+      {
+        question: "When things go wrong, how do you usually react emotionally?",
+        category: "emotion",
+        options: ["Explode", "Anxious", "Stressed", "Try to stay calm", "Very calm"],
+      },
+      {
+        question: "Can you remember a pattern of lights/colors shown briefly?",
+        category: "memory",
+        options: ["Never", "Rarely", "Sometimes", "Often", "Always"],
+      },
+      {
+        question: "If a word says 'Blue' but is colored green — what do you say?",
+        category: "executive",
+        options: ["Say 'Blue' without thinking", "Confused", "Sometimes right", "Usually right", "Always right"],
+      },
+    ];
+
+    const form = document.getElementById("assessmentForm");
+    const scores = {};
+    const counts = {};
+
+    questions.forEach((q, i) => {
+      scores[q.category] = 0;
+      counts[q.category] = 0;
+      const div = document.createElement("div");
+      div.className = "question";
+
+      const p = document.createElement("p");
+      p.innerText = `${i + 1}. ${q.question}`;
+      div.appendChild(p);
+
+      q.options.forEach((opt, j) => {
+        const label = document.createElement("label");
+        label.innerHTML = `<input type="radio" name="q${i}" value="${j}" required> ${opt}`;
+        div.appendChild(label);
+      });
+
+      form.appendChild(div);
+    });
+
+    function submitAssessment() {
+      const formData = new FormData(form);
+      const answers = [...formData.entries()];
+
+      answers.forEach(([key, val], index) => {
+        const category = questions[index].category;
+        scores[category] += parseInt(val);
+        counts[category] += 1;
+      });
+
+      for (let key in scores) {
+        scores[key] = Math.round(scores[key] / counts[key]);
+      }
+
+      const suggestedGames = [];
+      if (scores.focus < 3) suggestedGames.push("Perception Test");
+      if (scores.focus < 3) suggestedGames.push("Attention Test");
+      if (scores.memory < 3) suggestedGames.push("Memory Test");
+      if (scores.language > 3) suggestedGames.push("Language Test");
+      if (scores.reflex < 3) suggestedGames.push("Reaction & Reflex Game");
+      if (scores.stress > 3 || scores.executive < 3) suggestedGames.push("Stroop Test");
+
+      localStorage.setItem("suggestedGames", JSON.stringify(suggestedGames));
+      window.location.href = "result.html";
+    }
+  </script>
+</body>
+</html>

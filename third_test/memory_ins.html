@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Memory Test Instructions</title>
+  <link href="https://fonts.googleapis.com/css2?family=Segoe+UI&display=swap" rel="stylesheet" />
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #1f1f1f, #2e2e2e);
+      color: #fff;
+      line-height: 1.6;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 50px 20px;
+      min-height: 100vh;
+    }
+    .container {
+      background: #111;
+      padding: 40px;
+      border-radius: 16px;
+      max-width: 800px;
+      width: 100%;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      text-align: center;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      background: linear-gradient(90deg, #00c9ff, #92fe9d);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .steps {
+      text-align: left;
+      margin-top: 30px;
+    }
+    .step {
+      background: #1f1f1f;
+      border-left: 4px solid #00c9ff;
+      padding: 15px 20px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      transition: background 0.3s ease;
+    }
+    .step:hover {
+      background: #2a2a2a;
+    }
+    .step h3 {
+      font-size: 1.3rem;
+      color: #00c9ff;
+      margin-bottom: 10px;
+    }
+    .start-btn {
+      margin-top: 30px;
+      display: inline-block;
+      padding: 12px 24px;
+      font-size: 1rem;
+      color: white;
+      background: linear-gradient(90deg, #00c9ff, #92fe9d);
+      border: none;
+      border-radius: 30px;
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .start-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 201, 255, 0.3);
+    }
+    @media (max-width: 600px) {
+      h1 {
+        font-size: 2rem;
+      }
+      .step h3 {
+        font-size: 1.1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Memory Test Instructions</h1>
+    <div class="steps">
+      <div class="step">
+        <h3>Step 1: Observe the Sequence</h3>
+        <p>You will be shown a sequence of random images for 10 seconds. Focus and try to memorize the order carefully.</p>
+      </div>
+      <div class="step">
+        <h3>Step 2: Recall the Pattern</h3>
+        <p>After the sequence disappears, you will be asked to recall the pattern by selecting the images in the correct order.</p>
+      </div>
+      <div class="step">
+        <h3>Step 3: Complete All Rounds</h3>
+        <p>The game consists of multiple rounds with increasing difficulty. Try to score as high as possible!</p>
+      </div>
+      <div class="step">
+        <h3>Step 4: Use Focus and Memory</h3>
+        <p>Stay calm and focused to improve your memory skills with each round.</p>
+      </div>
+    </div>
+    <a href="index.html" class="start-btn">Start Memory Test</a>
+  </div>
+</body>
+</html>

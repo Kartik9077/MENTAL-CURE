@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Summary - Mental Cure</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #c9ffbf, #ffafbd);
+      margin: 0;
+      padding: 40px 20px;
+    }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      background: white;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 4px 25px rgba(0, 0, 0, 0.2);
+      animation: fadeIn 0.6s ease-in-out;
+      text-align: center;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    h1 {
+      color: #2c3e50;
+      margin-bottom: 20px;
+    }
+    .score-card {
+      background: #f7f7f7;
+      margin: 15px auto;
+      padding: 15px;
+      border-radius: 10px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      max-width: 500px;
+    }
+    .score-card h2 {
+      margin-bottom: 5px;
+      color: #34495e;
+    }
+    .score-card p {
+      margin: 0;
+      font-size: 18px;
+    }
+    .btn {
+      margin-top: 30px;
+      padding: 12px 24px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background: #3498db;
+      color: white;
+      cursor: pointer;
+    }
+    .btn:hover {
+      background: #2980b9;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🎉 All Games Completed!</h1>
+    <p>Here are your scores from each game:</p>
+    <div id="resultContainer"></div>
+
+    <button class="btn" onclick="restart()">Restart Assessment</button>
+  </div>
+
+  <script>
+    const results = JSON.parse(localStorage.getItem("gameResults")) || {};
+    const container = document.getElementById("resultContainer");
+
+    if (Object.keys(results).length === 0) {
+      container.innerHTML = "<p>No results found. Please play the games first.</p>";
+    } else {
+      Object.entries(results).forEach(([game, score]) => {
+        const div = document.createElement("div");
+        div.className = "score-card";
+        div.innerHTML = `
+          <h2>${game}</h2>
+          <p>Score: <strong>${score}</strong></p>
+        `;
+        container.appendChild(div);
+      });
+    }
+
+    function restart() {
+      localStorage.removeItem("suggestedGames");
+      localStorage.removeItem("currentGameIndex");
+      localStorage.removeItem("gameResults");
+      window.location.href = "assessment.html";
+    }
+  </script>
+</body>
+</html>

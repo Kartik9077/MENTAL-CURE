@@ -1,0 +1,211 @@
+:root {
+    --primary: #6c5ce7;
+    --secondary: #a29bfe;
+    --dark: #2d3436;
+    --light: #f5f6fa;
+    --success: #00b894;
+    --danger: #d63031;
+    --warning: #fdcb6e;
+    --info: #0984e3;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background-color: var(--light);
+    color: var(--dark);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.game-container {
+    background-color: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 800px;
+    padding: 30px;
+    text-align: center;
+}
+
+.header {
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    color: var(--primary);
+    margin-bottom: 15px;
+    font-size: 2.5rem;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-around;
+    background-color: var(--light);
+    padding: 15px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+.game-info div {
+    font-weight: 600;
+}
+
+.game-info span:first-child {
+    color: var(--primary);
+    margin-right: 5px;
+}
+
+.game-area {
+    margin-bottom: 30px;
+}
+
+.target-instruction {
+    font-size: 1.3rem;
+    margin-bottom: 20px;
+    font-weight: 600;
+}
+
+.target-letter {
+    font-size: 1.5rem;
+    color: var(--primary);
+    font-weight: 700;
+}
+
+#word-input {
+    width: 60%;
+    padding: 10px 15px;
+    font-size: 1.1rem;
+    border-radius: 10px;
+    border: 2px solid var(--primary);
+    outline: none;
+    transition: border-color 0.3s ease;
+}
+
+#word-input:focus {
+    border-color: var(--info);
+}
+
+.words-list {
+    margin-top: 20px;
+    min-height: 80px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: left;
+    font-size: 1rem;
+    color: var(--dark);
+    font-weight: 600;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.words-list span {
+    background-color: var(--secondary);
+    color: white;
+    padding: 5px 12px;
+    border-radius: 30px;
+}
+
+.controls {
+    margin-top: 20px;
+}
+
+.btn {
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 50px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(108, 92, 231, 0.3);
+}
+
+.btn:hover {
+    background-color: #5649c0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(108, 92, 231, 0.4);
+}
+
+.round-result {
+    margin-top: 30px;
+    padding: 15px;
+    border-radius: 10px;
+    font-weight: 600;
+    font-size: 1.3rem;
+    color: var(--primary);
+}
+
+.hidden {
+    display: none !important;
+}
+
+@media (max-width: 600px) {
+    #word-input {
+        width: 100%;
+    }
+}
+
+header {
+    position: absolute;
+    top: 40px;
+    left: 40px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 10;
+}
+
+.site-logo {
+    height: 150px;
+    width: auto;
+}
+
+.site-title {
+    font-size: 0rem;
+    color: var(--dark);
+    font-weight: bold;
+}
+#final-result {
+    background: #f0f4f8;
+    border: 2px solid #3a86ff;
+    border-radius: 8px;
+    padding: 20px;
+    margin-top: 20px;
+    max-width: 400px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: #073b4c;
+    box-shadow: 0 4px 10px rgba(58, 134, 255, 0.3);
+  }
+  
+  #final-result h2 {
+    color: #ff006e;
+    margin-bottom: 15px;
+  }
+  
+  #final-result p {
+    font-size: 1.1rem;
+    margin: 6px 0;
+  }
+  #final-result {
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+  }
+  
+  #final-result:not(.hidden) {
+    opacity: 1;
+  }
+  
+  
