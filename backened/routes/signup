@@ -1,0 +1,27 @@
+const express = require("express");
+const router = express.Router();
+const User = require("../models/user"); // Adjust path as needed
+
+router.post("/signup", async (req, res) => {
+  const { name, email, password } = req.body;
+
+  try {
+    // Optional: Check for existing user
+    const existingUser = await User.findOne({ email });
+    if (existingUser) {
+      return res.status(400).json({ error: "User already exists" });
+    }
+
+    const user = new User({ name, email, password });
+    await user.save();
+
+    console.log("✅ User saved to MongoDB:", user);
+
+    res.status(201).json({ message: "Signup successful" });
+  } catch (error) {
+    console.error("❌ Error in signup:", error);
+    res.status(500).json({ error: "Signup failed" });
+  }
+});
+
+module.exports = router;
