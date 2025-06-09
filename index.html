@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mental Cure — Brain Fitness Games</title>
+  <link href="logo.png" rel="stylesheet" />
+  <style>
+    /* Reset & basics */
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+      font-family: 'Inter', sans-serif;
+      background: #fff;
+      color: #333;
+      line-height: 1.6;
+    }
+    img {
+      max-width: 100%;
+      display: block;
+      height: auto;
+    }
+    a {
+      text-decoration: none;
+      color: #0077ff;
+      transition: color 0.3s ease;
+    }
+    a:hover,
+    a:focus {
+      color: #005fcc;
+      outline: none;
+    }
+    /* Container */
+    .container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+    /* Header */
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 0;
+      border-bottom: 1px solid #eee;
+    }
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 1 0rem;
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 1.5rem;
+      color: #0077ff;
+      cursor: pointer;
+      user-select: none;
+      transition: transform 0.3s ease;
+    }
+    .logo img {
+      width: 60px;
+      height: 60px;
+    }
+    .logo:hover,
+    .logo:focus {
+      transform: scale(1.05);
+      outline: none;
+    }
+    nav {
+      display: flex;
+      gap: 1.6rem;
+      font-weight: 600;
+    }
+    nav a {
+      padding: 0.25rem 0;
+      border-bottom: 2px solid transparent;
+    }
+    nav a:hover,
+    nav a:focus {
+      border-color: #0077ff;
+    }
+    /* Hero Section */
+    .hero {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 3rem 0 5rem;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+    .hero-text {
+      flex: 1 1 400px;
+      max-width: 600px;
+    }
+    .hero-text h2 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 2.75rem;
+      margin-bottom: 1rem;
+      color: #222;
+    }
+    .hero-text p {
+      font-size: 1.125rem;
+      margin-bottom: 2rem;
+      color: #555;
+    }
+    .hero-text button {
+      background: #0077ff;
+      border: none;
+      color: white;
+      padding: 0.75rem 2rem;
+      font-size: 1.125rem;
+      font-weight: 600;
+      border-radius: 6px;
+      cursor: pointer;
+      box-shadow: 0 6px 12px rgba(0, 119, 255, 0.3);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .hero-text button:hover,
+    .hero-text button:focus {
+      background: #005fcc;
+      box-shadow: 0 8px 16px rgba(0, 95, 204, 0.4);
+      outline: none;
+    }
+    .hero-img {
+      flex: 1 1 300px;
+      max-width: 400px;
+      user-select: none;
+      filter: drop-shadow(0 6px 10px rgba(0,0,0,0.08));
+      transition: transform 0.3s ease;
+    }
+    .hero-img img {
+      border-radius: 16px;
+      width: 100%;
+      height: auto;
+      object-fit: contain;
+    }
+    .hero-img:hover,
+    .hero-img:focus {
+      transform: scale(1.05);
+      outline: none;
+    }
+    /* About Section */
+    .article-section {
+      max-width: 700px;
+      margin: 0 auto 5rem;
+      text-align: center;
+      padding: 0 1rem;
+    }
+    .article-section h2 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      margin-bottom: 1rem;
+      color: #222;
+    }
+    .article-section p {
+      font-size: 1.1rem;
+      color: #555;
+      line-height: 1.8;
+    }
+    /* Games Section */
+    .games-section {
+      margin-bottom: 5rem;
+      padding: 0 1rem;
+    }
+    .section-title {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      font-size: 2rem;
+      color: #222;
+      text-align: center;
+      margin-bottom: 0.25rem;
+    }
+    .section-subtitle {
+      color: #777;
+      text-align: center;
+      margin-bottom: 2.5rem;
+      font-weight: 500;
+    }
+    .games-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 2rem;
+    }
+    .game-card {
+      background: #fafafa;
+      border-radius: 12px;
+      padding: 1.8rem 1.5rem;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      user-select: none;
+    }
+    .game-card:hover,
+    .game-card:focus {
+      box-shadow: 0 12px 20px rgba(0, 119, 255, 0.15);
+      transform: translateY(-6px);
+      outline: none;
+    }
+    .game-card h3 {
+      font-family: 'Poppins', sans-serif;
+      font-weight: 700;
+      color: #0077ff;
+      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+    }
+    .game-card p {
+      flex-grow: 1;
+      color: #555;
+      font-size: 1rem;
+      margin-bottom: 1.5rem;
+      line-height: 1.5;
+    }
+    .game-btn {
+      align-self: flex-start;
+      background: #0077ff;
+      color: white;
+      border: none;
+      padding: 0.6rem 1.6rem;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 4px 10px rgba(0,119,255,0.25);
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    }
+    .game-btn:hover,
+    .game-btn:focus {
+      background: #005fcc;
+      box-shadow: 0 6px 16px rgba(0,95,204,0.35);
+      outline: none;
+    }
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 2rem 1rem;
+      border-top: 1px solid #eee;
+      color: #999;
+      font-size: 0.9rem;
+      user-select: none;
+    }
+    /* Responsive */
+    @media (max-width: 720px) {
+      .hero {
+        flex-direction: column;
+        margin: 2rem 0 4rem;
+      }
+      .hero-text h2 {
+        font-size: 2rem;
+      }
+      .hero-text p {
+        font-size: 1rem;
+      }
+      nav {
+        gap: 1rem;
+        font-size: 0.95rem;
+      }
+      .games-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="container">
+    <div class="logo" tabindex="0" aria-label="Mental Cure logo" role="link" onclick="location.href='/'" onkeypress="if(event.key==='Enter'){location.href='/'}">
+      <img src="logo.png" alt="Mental Cure Icon" />
+      <span>Mental Cure</span>
+    </div>
+    <nav aria-label="Primary Navigation">
+      <a href="games.html" tabindex="0">Games</a>
+      <a href="about.html" tabindex="0">About us</a>
+      <a href="profile.html" tabindex="0">Profile</a>
+      <a href="login.html" tabindex="0">Login/Signup</a>
+    </nav>
+  </header>
+
+  <main class="container">
+    <section class="hero" aria-label="Hero Section">
+      <div class="hero-text">
+        <h2>Heal Through Fun &amp; Science</h2>
+        <p>Unlock your brain’s potential with scientifically designed mental fitness games. Focus, react, and grow every day.</p>
+        <button onclick="location.href='assessment.html'" aria-label="Start Perception Test">Go To Assessment</button>
+      </div>
+      <div class="hero-img" role="img" aria-label="Brain with mental gears illustration" tabindex="0">
+        <img src="logo.png" alt="Mental fitness brain graphic" />
+      </div>
+    </section>
+
+    <section class="article-section" aria-label="About Mental Cure">
+      <h2>What is Mental Cure?</h2>
+      <p>
+        Mental Cure is a platform of interactive brain games designed to improve focus, attention, memory, and language skills.
+        Train your mind daily and track your progress. Mental health and cognitive fitness are at your fingertips.
+      </p>
+    </section>
+
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+  
+      body {
+        font-family: 'Segoe UI', sans-serif;
+        background: linear-gradient(to bottom right, #e6f0ff, #fefeff);
+        color: #2c3e50;
+      }
+  
+      header {
+        background: #fff;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+        padding: 1rem 2rem;
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+  
+      .nav-container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+  
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.8rem;
+        font-size: 1.7rem;
+        font-weight: 700;
+        color: #2d6cdf;
+      }
+  
+      .logo img {
+        height: 55px;
+        width: 55px;
+        border-radius: 50%;
+        box-shadow: 0 3px 10px rgba(45, 108, 223, 0.3);
+      }
+  
+      nav a {
+        margin: 0 1rem;
+        text-decoration: none;
+        color: #333;
+        font-weight: 600;
+        transition: color 0.3s ease;
+      }
+  
+      nav a:hover {
+        color: #2d6cdf;
+      }
+  
+      .greeting {
+        text-align: center;
+        margin: 1.5rem 0;
+        font-size: 1.4rem;
+        font-weight: 600;
+        color: #2d6cdf;
+        animation: fadeIn 1s ease-in-out;
+      }
+  
+      @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(-10px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
+  
+      .games-section {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+  
+      .section-title {
+        text-align: center;
+        font-size: 2.4rem;
+        color: #2d6cdf;
+        margin-bottom: 0.5rem;
+      }
+  
+      .section-subtitle {
+        text-align: center;
+        font-size: 1.1rem;
+        color: #555;
+        margin-bottom: 2rem;
+      }
+  
+      .games-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+        gap: 2rem;
+      }
+  
+      .game-card {
+        background: #ffffff;
+        border-radius: 16px;
+        padding: 1.5rem;
+        text-align: center;
+        box-shadow: 0 8px 30px rgba(0, 0, 0, 0.05);
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
+  
+      .game-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 12px 30px rgba(0, 0, 0, 0.1);
+      }
+  
+      .game-card img {
+        width: 80px;
+        height: 80px;
+        margin-bottom: 1rem;
+        border-radius: 12px;
+        object-fit: cover;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.08);
+      }
+  
+      .game-card h3 {
+        margin-bottom: 0.6rem;
+        color: #2d6cdf;
+        font-size: 1.2rem;
+      }
+  
+      .game-card p {
+        font-size: 0.95rem;
+        color: #555;
+        margin-bottom: 1rem;
+      }
+  
+      .game-btn {
+        display: inline-block;
+        padding: 0.6rem 1.2rem;
+        background-color: #2d6cdf;
+        color: white;
+        border-radius: 10px;
+        text-decoration: none;
+        font-weight: 600;
+        transition: background 0.3s ease, transform 0.2s ease;
+      }
+  
+      .game-btn:hover {
+        background-color: #1f52b0;
+        transform: scale(1.05);
+      }
+  
+      footer {
+        text-align: center;
+        padding: 1.5rem 0;
+        background-color: #f2f2f2;
+        font-size: 0.9rem;
+        color: #777;
+        margin-top: 3rem;
+      }
+    </style>
+  </head>
+  <body>
+    
+  
+    <div class="greeting" id="userGreeting">Welcome!</div>
+  
+    <main>
+      <section class="games-section">
+        <h2 class="section-title">Interactive Games</h2>
+        <p class="section-subtitle">Engage in fun, relaxing and cognitive games tailored to support your mental well-being.</p>
+  
+        <div class="games-grid">
+          <div class="game-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/1517/1517742.png" alt="Perception" />
+            <h3>Perception Test</h3>
+            <p>Improve cognitive skills by matching pairs.</p>
+            <a href="../first/perception_instructions.html" class="game-btn">Play Now</a>
+          </div>
+  
+          <div class="game-card">
+  <img src="https://cdn-icons-png.flaticon.com/512/3062/3062634.png" alt="Stroop" />
+  
+            <h3>Stroop Test</h3>
+            <p>Test your attention span and color-word coordination.</p>
+            <a href="../fifth/stroop_instructions.html" class="game-btn">Play Now</a>
+          </div>
+  
+          <div class="game-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/942/942751.png" alt="Attention" />
+  
+            <h3>Attention Test</h3>
+            <p>Sharpen focus through calming visuals and reflexes.</p>
+            <a href="../second/attention_instructions.html" class="game-btn">Play Now</a>
+          </div>
+  
+          <div class="game-card">
+            <img src="https://img.icons8.com/fluency/96/lightning-bolt.png" alt="Reflex">
+            <h3> Reflex&Reaction Test</h3>
+            <p>How fast can you react? Find out with this reflex test!</p>
+            <a href="../sixth/reflex_instruc.html" class="game-btn">Play Now</a>
+          </div>
+  
+          <div class="game-card">
+            <img src="https://img.icons8.com/fluency/96/brain.png" alt="Memory">
+            <h3>Memory Test</h3>
+            <p>Train emotional recognition through face-based memory games.</p>
+            <a href="../third_test/memory_ins.html" class="game-btn">Play Now</a>
+          </div>
+  
+          <div class="game-card">
+            <img src="https://cdn-icons-png.flaticon.com/512/190/190411.png" alt="Language" />
+  
+            <h3>Language Test</h3>
+            <p>Boost logic and language skills through fun challenges.</p>
+            <a href="../fourth/language_instructions.html" class="game-btn">Play Now</a>
+          </div>
+        </div>
+      </section>
+    </main>
+  </main>
+
+  <footer>
+    &copy; 2025 Mental Cure — Brain games crafted for your wellness
+  </footer>
+</body>
+</html>
