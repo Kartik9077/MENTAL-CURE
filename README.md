@@ -52,10 +52,4 @@ A full-stack mental wellness platform that helps users assess their cognitive an
 
 ---
 
-## 🚀 Getting Started
 
-### 1. Clone the Repository
-
-```bash
-git clone https://github.com/Isha882004/Mentality-diagonsis-game.git
-cd Mentality-diagonsis-game
