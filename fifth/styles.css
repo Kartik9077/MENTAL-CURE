@@ -1,0 +1,188 @@
+:root {
+  --primary: #6c5ce7;
+  --secondary: #a29bfe;
+  --dark: #2d3436;
+  --light: #f5f6fa;
+  --success: #00b894;
+  --danger: #d63031;
+  --warning: #fdcb6e;
+  --info: #0984e3;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  background-color: var(--light);
+  color: var(--dark);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.game-container {
+  background-color: white;
+  border-radius: 15px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 800px;
+  padding: 30px;
+  text-align: center;
+}
+
+.header h1 {
+  color: var(--primary);
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.game-info {
+  display: flex;
+  justify-content: space-around;
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+#word-input {
+  padding: 10px;
+  font-size: 1rem;
+  width: 80%;
+  max-width: 400px;
+  border: 2px solid var(--primary);
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+#words-list span {
+  background: var(--secondary);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 8px;
+  margin: 5px;
+  display: inline-block;
+}
+
+.btn {
+  background-color: var(--primary);
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 50px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s ease;
+}
+
+.btn:hover {
+  background-color: #5649c0;
+  transform: translateY(-2px);
+}
+
+.round-result {
+  margin-top: 20px;
+  padding: 15px;
+  border-radius: 10px;
+  font-weight: 600;
+}
+
+.round-result.success {
+  background-color: rgba(0, 184, 148, 0.2);
+  color: var(--success);
+}
+
+.round-result.error {
+  background-color: rgba(214, 48, 49, 0.2);
+  color: var(--danger);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.game-over {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.85);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 100;
+  color: white;
+}
+
+.game-over h2 {
+  font-size: 3rem;
+  color: var(--warning);
+}
+
+.final-stats {
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  font-size: 1.2rem;
+  color: var(--light);
+  font-weight: 600;
+  width: 100%;
+  max-width: 400px;
+  text-align: left;
+}
+
+.final-stats div {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed rgba(255, 255, 255, 0.3);
+  padding-bottom: 6px;
+}.site-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.site-logo {
+  height: 150px;
+  object-fit: contain;
+}
+
+.test-title {
+  text-align: center;
+  margin-top: 10px;
+  font-size: 28px;
+  font-weight: bold;
+  color: #333;
+}/* Logo at top-left */
+.logo-header {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  z-index: 10;
+}
+
+.site-logo {
+  height: 150px;
+  object-fit: contain;
+}
+
+/* Centered Game Title like Perception Test */
+.game-title {
+  text-align: center;
+  font-size: 32px;
+  margin: 0 0 20px 0;
+  color: #333;
+  font-weight: 600;
+}
+
+
+

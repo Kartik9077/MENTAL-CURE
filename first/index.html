@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Perception Test</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Mind Logo" class="site-logo">
+        <h1 class="site-title">Mental Cure</h1>
+      </header>
+    <div class="game-container">
+        <div class="header">
+            <h1>Perception Test</h1>
+            <div class="game-info">
+                <div class="timer">
+                    <span>Time:</span>
+                    <span id="time">14</span>s
+                </div>
+                <div class="score">
+                    <span>Score:</span>
+                    <span id="score">0</span>
+                </div>
+                <div class="round">
+                    <span>Round:</span>
+                    <span id="round">1</span>/5
+                </div>
+            </div>
+        </div>
+
+        <div class="game-area">
+            <div class="target-instruction">
+                Find all: <span id="target-shape" class="target-example"></span>
+            </div>
+            <div id="game-board" class="game-board"></div>
+        </div>
+
+        <div class="controls">
+            <button id="start-btn" class="btn">Begin Test</button>
+            <div id="round-result" class="round-result hidden"></div>
+        </div>
+    </div>
+
+    <div id="game-over" class="game-over hidden">
+        <h2>Test Complete!</h2>
+        <p>Your final score: <span id="final-score">0</span></p>
+        <p class="performance"></p>
+        <div class="final-stats">
+            <p><strong>Right Clicks:</strong> <span id="final-right-clicks">0</span></p>
+            <p><strong>Wrong Clicks:</strong> <span id="final-wrong-clicks">0</span></p>
+            <p><strong>Avg. Reaction Time:</strong> <span id="final-reaction-time">-</span></p>
+            
+          </div>
+          <button id="restart-btn" class="btn">Try Again</button>
+    </div>
+    
+
+    <script src="script.js"></script>
+    <script>
+        async function sendPerformanceData(data) {
+          try {
+            const response = await fetch('http://127.0.0.1:5000/predict', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify(data)
+            });
+        
+            const result = await response.json();
+            console.log("Predicted focus level:", result.focus_level);
+        
+            // You can adjust difficulty here based on result.focus_level
+            // Example:
+            adjustDifficulty(result.focus_level);
+        
+          } catch (error) {
+            console.error("Error sending data to server:", error);
+          }
+        }
+        
+        function adjustDifficulty(focusLevel) {
+          if (focusLevel === "High") {
+            // Increase distractors, reduce time
+            console.log("High Focus → Increase difficulty");
+            // Call game logic here
+          } else if (focusLevel === "Medium") {
+            console.log("Medium Focus → Moderate difficulty");
+          } else {
+            // Decrease distractors, increase time
+            console.log("Low Focus → Decrease difficulty");
+          }
+        }
+        </script>
+        
+</body>
+</html>

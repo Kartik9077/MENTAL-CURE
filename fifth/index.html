@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Stroop Test</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- Logo Top-Left -->
+  <div class="logo-header">
+    <img src="logo.png" alt="Icing Logo" class="site-logo" />
+  </div>
+
+  <div class="game-container">
+    <!-- Title inside game container -->
+    <h1 class="game-title">Stroop Test</h1>
+
+    <div class="header">
+      <h2>Identify the <strong>COLOR</strong> of the word</h2>
+    </div>
+
+    <div class="game-info">
+      <div><span>Round:</span> <span id="round">0</span>/5</div>
+      <div><span>Question:</span> <span id="question">0</span>/5</div>
+      <div><span>Score:</span> <span id="score">0</span></div>
+    </div>
+
+    <div class="game-area">
+      <div id="stroop-word">Press Start</div>
+      <div id="color-buttons"></div>
+    </div>
+
+    <div class="controls">
+      <button class="btn" id="start-btn">Start Game</button>
+    </div>
+
+    <div class="round-result hidden" id="round-result"></div>
+
+    <div class="game-over hidden" id="final-result">
+      <h2>Test Complete</h2>
+      <div class="final-stats" id="final-stats"></div>
+      <button class="btn" onclick="location.reload()">Restart</button>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
