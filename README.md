@@ -12,6 +12,7 @@ A full-stack mental wellness platform that helps users assess their cognitive an
   - Profile picture upload
   - Game performance tracking
   - Assessment history
+  - full dashboard
 
 ### 📝 Assessment Flow
 - Users answer a set of initial mental health questions.
