@@ -50,6 +50,7 @@ A full-stack mental wellness platform that helps users assess their cognitive an
 
 ### Deployment
 - GitHub Pages
+- Netlify
 
 ---
 
