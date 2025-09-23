@@ -3,7 +3,7 @@
 A full-stack mental wellness platform that helps users assess their cognitive and psychological abilities through engaging and personalized games. The system offers sign-up/login functionality, personalized dashboards, profile pictures, and dynamically assigned games based on an initial assessment.
 
 ---
-
+LIVE LINK https://mental-cure.netlify.app
 ## 🌟 Key Features
 
 ### 👤 User Management
