@@ -38,10 +38,10 @@ LIVE LINK https://mental-cure.netlify.app
 
 ### Frontend
 - HTML, CSS, JavaScript  
-- Optional: React.js (if SPA)
+- Optional: React.js 
 
 ### Backend
-- Node.js, Express.js  
+- Node.js.
 - Authentication (JWT or session-based)
 
 ### Database
